@@ -1,0 +1,31 @@
+.logo-lg {
+    color: #fff;
+}
+
+.wrapper,
+.main-sidebar,
+.left-side {
+    background-color: #222d32;
+}
+
+a,
+.info {
+    color: #fff;
+}
+
+a:hover,
+a:visited {
+    color: #d79468;
+}
+
+.sidebar-menu>li.active>a {
+    border-left-color: #d79468;
+}
+
+.main-header .logo {
+    background-color: #d79468;
+}
+
+.main-header .logo a :hover {
+    color: #d79468;
+}
