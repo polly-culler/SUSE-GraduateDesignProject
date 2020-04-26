@@ -298,81 +298,115 @@
     <!-- ---------------------------------------------- -->
 
     <!-- ------------------contain-------------------- -->
-    <div class="main-content main-content-checkout ">
-        <div class="container ">
-            <div class="row ">
-                <div class="col-lg-12 ">
-                    <div class="breadcrumb-trail breadcrumbs ">
-                        <ul class="trail-items breadcrumb ">
-                            <li class="trail-item trail-begin ">
-                                <a href="index.html ">首页</a>
-                            </li>
-                            <li class="trail-item trail-end active ">
-                                订单查看
-                            </li>
-                        </ul>
+    <div class="site-content">
+        <main class="site-main  main-container no-sidebar">
+            <div class="container">
+                <div class="breadcrumb-trail breadcrumbs">
+                    <ul class="trail-items breadcrumb">
+                        <li class="trail-item trail-begin">
+                            <a href="">
+                                <span>
+                                        首页
+                                    </span>
+                            </a>
+                        </li>
+                        <li class="trail-item trail-end active">
+                            <span>
+                                    你的订单
+                                </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="main-content-cart main-content col-sm-12">
+                        <h3 class="custom_blog_title">
+                            订单
+                        </h3>
+                        <div class="page-main-content">
+                            <div class="shoppingcart-content">
+                                <form action="shoppingcart.html" class="cart-form">
+                                    <table class="shop_table">
+                                        <thead>
+                                            <tr>
+
+                                                <th class="product-thumbnail"></th>
+                                                <th class="product-name"></th>
+                                                <th class="product-price"></th>
+                                                <th class="product-staus">订单状态</th>
+                                                <th class="product-operation">操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="cart_item">
+
+                                                <td class="product-thumbnail">
+                                                    <a href="#">
+                                                        <img src="assets/images/cart-item-2.jpg" alt="img" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                                    </a>
+                                                </td>
+                                                <td class="product-name" data-title="Product">
+                                                    <a href="#" class="title">Mini swing dress</a>
+                                                    <span class="attributes-select attributes-color">Black,</span>
+                                                    <span class="attributes-select attributes-size">XXL</span>
+                                                </td>
+                                                <td class="product-price" data-title="Price">
+                                                    <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">
+                                                                $
+                                                            </span> 45
+                                                    </span>
+                                                </td>
+                                                <td class="product-staus">
+                                                    <span></span>
+                                                </td>
+                                                <td class="product-operation">
+                                                    <span>查看订单</span>
+                                                    <span>支付</span>
+                                                    <span>取消</span>
+                                                </td>
+                                            </tr>
+                                            <tr class="cart_item">
+
+                                                <td class="product-thumbnail">
+                                                    <a href="#">
+                                                        <img src="assets/images/cart-item-3.jpg" alt="img" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                                    </a>
+                                                </td>
+                                                <td class="product-name" data-title="Product">
+                                                    <a href="#" class="title">Square neck top</a>
+                                                    <span class="attributes-select attributes-color">White,</span>
+                                                    <span class="attributes-select attributes-size">M</span>
+                                                </td>
+
+                                                <td class="product-price" data-title="Price">
+                                                    <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">
+                                                                $
+                                                            </span> 45
+                                                    </span>
+                                                </td>
+                                                <td class="product-staus">
+                                                    <span></span>
+                                                </td>
+                                                <td class="product-operation">
+                                                    <span>查看订单</span>
+                                                    <span>支付</span>
+                                                    <span>取消</span>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </form>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <h3 class="custom_blog_title ">
-                订单查看
-            </h3>
-            <div class="checkout-wrapp ">
-                <div class="shipping-address-form-wrapp ">
-                    <div class="shipping-address-form checkout-form ">
-                        <div class="row-col-1 row-col ">
-                            <div class="shipping-address ">
-                                <h3 class="title-form ">
-                                    收货地址
-                                </h3>
-                                <p class="form-row form-row-first ">
-                                    <label class="text ">收货人</label>
-                                    <input title="first " type="text " class="input-text ">
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row-col-2 row-col ">
-                            <div class="your-order ">
-                                <h3 class="title-form ">
-                                    你的订单：（订单编号）
-                                </h3>
-                                <ul class="list-product-order ">
-                                    <li class="product-item-order ">
-                                        <div class="product-thumb ">
-                                            <a href="# ">
-                                                <img src="assets/images/item-order1.jpg " alt="img ">
-                                            </a>
-                                        </div>
-                                        <div class="product-order-inner ">
-                                            <h5 class="product-name ">
-                                                <a href="# ">3D Dining Chair</a>
-                                            </h5>
-                                            <span class="attributes-select attributes-color ">Black,</span>
-                                            <span class="attributes-select attributes-size ">XXL</span>
-                                            <div class="price ">
-                                                $45
-                                                <span class="count ">x1</span>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                </ul>
-                                <div class="order-total ">
-                                    <span class="title ">
-                            Total Price:
-                        </span>
-                                    <span class="total-price ">
-                            $95
-                        </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+        </main>
     </div>
+
 
 
 
