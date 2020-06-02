@@ -16,18 +16,18 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="<%=basePath%>admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=basePath %>admin/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="<%=basePath%>admin/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<%=basePath %>admin/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="<%=basePath%>admin/css/ionicons.min.css">
+    <link rel="stylesheet" href="<%=basePath %>admin/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="<%=basePath%>admin/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="<%=basePath %>admin/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="<%=basePath%>admin/css/_all-skins.min.css">
+    <link rel="stylesheet" href="<%=basePath %>admin/css/_all-skins.min.css">
 
-    <link rel="stylesheet" href="<%=basePath%>admin/css/back-end.css">
+    <link rel="stylesheet" href="<%=basePath %>admin/css/back-end.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -37,6 +37,15 @@
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+	<style>
+		a{
+			color: #d79468;
+		}
+		.box{
+				margin-bottom: 0px;
+				box-shadow: 0 0px 0px rgb(0,0,0);
+		}
+	</style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -104,14 +113,25 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="<%=basePath%>admin/img/user1-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="<%=basePath %>admin/img/user1-128x128.jpg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <p>管理员：admin</p>
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
                 </div>
-
+				<!-- search form -->
+				<form action="<c:url value='/AdminGoodsServlet'/>" method="get" class="sidebar-form">
+			        <input type="hidden" name="method" value="findByCombination"/>
+			        <div class="input-group">
+			          <input type="text" name="gname" class="form-control" placeholder="Search...">
+			              <span class="input-group-btn">
+			                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+			                </button>
+			              </span>
+			        </div>
+			    </form>
+				<!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li>
@@ -149,72 +169,37 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <h1>
-                   	添加商品
-                </h1>
-            </section>
             <section class="content">
-            	<div class="row">
-            		<div class="col-md-8">
-            			<div class="box box-warning">
-				            <div class="box-header with-border">
-				              <h3 class="box-title">添加商品</h3>
-				            </div>
-				            <!-- /.box-header -->
-				            <!-- form start -->
-				            <form role="form" action="<c:url value='/admin/AdminAddBookServlet'/>" enctype="multipart/form-data" method="post" id="form">
-				              <div class="box-body">
-				                <div class="form-group">
-				                  <label for="exampleInputEmail1">商品名</label>
-				                  <input type="text" class="form-control" id="exampleInputEmail1" name="gname" placeholder="商品名">
-				                </div>
-				                <div class="form-group">
-				                  <label for="exampleInputPassword1">现价</label>
-				                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="20" name="currPrice">
-				                </div>
-				                <div class="form-group">
-				                  <label for="exampleInputPassword1">原价</label>
-				                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="40" name="price">
-				                </div>
-				                <div class="form-group">
-				                  <label for="exampleInputFile">上传图片1</label>
-				                  <input type="file" id="exampleInputFile" name="image_w">
-				                </div>
-				                <div class="form-group">
-				                  <label for="exampleInputFile">上传图片2</label>
-				                  <input type="file" id="exampleInputFile" name="image_b">
-				                </div>
-				                <div class="form-group">
-				                  <label>一级分类</label>
-				                  <select class="form-control" name="pid" id="pid" onchange="loadChildren()">
-				                    <c:forEach items="${parents }" var="parent">
-						    			<option value="${parent.cid }">${parent.cname }</option>
-									</c:forEach>
-				                  </select>
-				                </div>
-				                <div class="form-group">
-				                  <label>二级分类</label>
-				                  <select class="form-control" name="cid" id="cid">
-				                    <c:forEach items="${parents }" var="parent">
-						    			<option value="${parent.cid }">${parent.cname }</option>
-									</c:forEach>
-				                  </select>
-				                </div>
-				                
-				              </div>
-				              <!-- /.box-body -->
-				
-				              <div class="box-footer">
-				                <button type="submit" class="btn btn-primary">Submit</button>
-				              </div>
-				            </form>
-				          </div>	
-            		</div>
-            	</div>
+              <div class="row">
+              <c:forEach items="${pb.beanList }" var="goods">
+               
+               	<div class="col-md-3">
+			          <!-- DIRECT CHAT WARNING -->
+			          <div class="box box-warning direct-chat direct-chat-warning">
+			            <!-- /.box-header -->
+			            <a href="<c:url value='/AdminGoodsServlet?method=load&gid=${goods.gid }'/>"><img alt="" src="<c:url value='/${goods.image_b }'/>" style="width: 200px;margin-left:15px;margin-top:15px;"></a>
+			            <!-- /.box-body -->
+			          </div>
+			          <!--/.direct-chat -->
+			          <div class="box-footer">
+			          	<p><a title="${goods.gname }" href="<c:url value='/AdminGoodsServlet?method=load&gid=${goods.gid }'/>">${goods.gname }</a></p>
+			          	<p>价格：￥${goods.currPrice }</p>
+			          </div>
+			        </div>
+              	</c:forEach>
+               </div>
+              
+            	<div class="box-footer clearfix">
+	              <ul class="pagination pagination-sm no-margin pull-right">
+	                <li><a href="#">«</a></li>
+	                <li><a href="#">1</a></li>
+	                <li><a href="#">2</a></li>
+	                <li><a href="#">3</a></li>
+	                <li><a href="#">»</a></li>
+	              </ul>
+	            </div>
             </section>
-	            
-	
+
 
         </div>
         <!-- /.content-wrapper -->

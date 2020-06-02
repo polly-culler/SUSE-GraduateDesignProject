@@ -342,12 +342,13 @@
                            <div class="icon ">
                            </div>
                            <h3 class="title-checkend ">
-                               Congratulation! Your order has been processed.
+                               支付成功
                            </h3>
                            <div class="sub-title ">
-                               Aenean dui mi, tempus non volutpat eget, molestie a orci. Nullam eget sem et eros laoreet rutrum. Quisque sem ante, feugiat quis lorem in.
+                              
                            </div>
-                           <a href="# " class="button btn-return ">Return to Store</a>
+                           <a href="<%=basePath%>user/index.jsp " class="button btn-return ">继续购物</a>
+                           <a href="<c:url value='/OrderServlet?method=myOrders'/>" class="button btn-return ">查看订单</a>
                        </div>
                    </div>
                </div>

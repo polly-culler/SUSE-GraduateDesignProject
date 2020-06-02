@@ -6,6 +6,7 @@ import cn.itcast.servlet.BaseServlet;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.polly.jiuWu.category.domain.Category;
+import com.polly.jiuWu.category.service.CategoryService;
 import com.polly.jiuWu.user.domain.User;
 import com.polly.jiuWu.user.service.UserService;
 
@@ -24,6 +27,8 @@ import com.polly.jiuWu.user.service.UserService;
 @WebServlet("/UserServlet") 
 public class UserServlet extends BaseServlet {
 	private UserService userService = new UserService();
+	//目录
+	//private CategoryService categoryService = new CategoryService();
 	
 	/**
 	 * 登录功能
@@ -35,6 +40,9 @@ public class UserServlet extends BaseServlet {
 	 */
 	public String login(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		
+		
+		
 		/*
 		 * 1. 封装表单数据到User
 		 * 2. 校验表单数据
@@ -88,6 +96,11 @@ public class UserServlet extends BaseServlet {
 					req.getSession().setAttribute("sessionUser", user);
 					// 获取用户名保存到cookie中
 					String loginname = user.getLoginname();
+					
+					//目录							
+					//List<Category> parents = categoryService.findAll();
+					//req.setAttribute("parents", parents);
+					
 					
 					loginname = URLEncoder.encode(loginname, "utf-8");
 					Cookie cookie = new Cookie("loginname", loginname);

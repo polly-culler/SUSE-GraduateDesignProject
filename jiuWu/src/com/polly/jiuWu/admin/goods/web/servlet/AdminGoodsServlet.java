@@ -50,7 +50,7 @@ public class AdminGoodsServlet extends BaseServlet {
 		goodsService.delete(gid);//删除数据库的记录
 		
 		req.setAttribute("msg", "删除图书成功！");
-		return "f:/adminjsps/msg.jsp";
+		return "f:/admin/500.jsp";
 	}
 	
 	/**
@@ -77,7 +77,7 @@ public class AdminGoodsServlet extends BaseServlet {
 		
 		goodsService.edit(goods);
 		req.setAttribute("msg", "修改图书成功！");
-		return "f:/adminjsps/msg.jsp";
+		return "f:/admin/500.jsp";
 	}
 	
 	/**
@@ -110,7 +110,7 @@ public class AdminGoodsServlet extends BaseServlet {
 		/*
 		 * 4. 转发到desc.jsp显示
 		 */
-		return "f:/admin/goods.jsp";
+		return "f:/admin/goods-detail.jsp";
 	}
 	
 	/**
@@ -129,7 +129,7 @@ public class AdminGoodsServlet extends BaseServlet {
 		 */
 		List<Category> parents = categoryService.findParents();
 		req.setAttribute("parents", parents);
-		return "f:/admin/goods.jsp";
+		return "f:/admin/goods-add.jsp";
 	}
 	
 	public String ajaxFindChildren(HttpServletRequest req, HttpServletResponse resp)
@@ -186,7 +186,7 @@ public class AdminGoodsServlet extends BaseServlet {
 		List<Category> parents = categoryService.findAll();
 		req.setAttribute("parents", parents);
 		//category..................
-		return "f:/adminjsps/admin/book/left.jsp";
+		return "f:/admin/admin.jsp";
 	}
 	
 	
@@ -263,7 +263,7 @@ public class AdminGoodsServlet extends BaseServlet {
 		 */
 		pb.setUrl(url);
 		req.setAttribute("pb", pb);
-		return "f:/admin/book.jsp";
+		return "f:/admin/goods-search.jsp";
 	}
 	
 	/**
@@ -297,7 +297,7 @@ public class AdminGoodsServlet extends BaseServlet {
 		 */
 		pb.setUrl(url);
 		req.setAttribute("pb", pb);
-		return "f:/admin/book/list.jsp";
+		return "f:/admin/goods-search.jsp";
 	}
 	
 	/**
@@ -331,7 +331,7 @@ public class AdminGoodsServlet extends BaseServlet {
 		 */
 		pb.setUrl(url);
 		req.setAttribute("pb", pb);
-		return "f:/admin/book/list.jsp";
+		return "f:/admin/goods-search.jsp";
 	}
 	
 	/**
@@ -342,7 +342,7 @@ public class AdminGoodsServlet extends BaseServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	public String findByBname(HttpServletRequest req, HttpServletResponse resp)
+	public String findByGname(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		/*
 		 * 1. 得到pc：如果页面传递，使用页面的，如果没传，pc=1
@@ -365,7 +365,7 @@ public class AdminGoodsServlet extends BaseServlet {
 		 */
 		pb.setUrl(url);
 		req.setAttribute("pb", pb);
-		return "f:/admin/book/list.jsp";
+		return "f:/admin/goods.jsp";
 	}
 	
 	/**
@@ -399,6 +399,6 @@ public class AdminGoodsServlet extends BaseServlet {
 		 */
 		pb.setUrl(url);
 		req.setAttribute("pb", pb);
-		return "f:/admin/book/list.jsp";
+		return "f:/admin/goods.jsp";
 	}
 }

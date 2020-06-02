@@ -33,9 +33,22 @@
     <link rel="stylesheet" href="<%=basePath%>user/assets/fonts/flaticon/flaticon.css">
     <link rel="stylesheet" href="<%=basePath%>user/assets/css/style.css">
 
-	 <script src="<%=basePath%>user/assets/js/jquery-1.12.4.min.js "></script>
+	<script src="<%=basePath%>user/assets/js/jquery-1.12.4.min.js "></script>
     <script src="<%=basePath%>user/assets/js/navbar.js "></script>
     
+    <style>
+    	.login-dropdown{
+    		display: block;
+		    padding: 11px 20px;
+		    color: #888;
+    	}
+    	.login-dropdown-ul{
+    		margin: 15px 0 0;
+		    min-width: 175px;
+		    top: 100%;
+		    left: 0;
+    	}
+    </style>
     <script language="javascript">
 		/*
 		 * 1. 对象名必须与第一个参数相同！
@@ -60,6 +73,7 @@
 		</c:forEach>
 			
 			$("#menu").html(bar.toString());
+
 		});
 	</script>
 	    
@@ -105,7 +119,7 @@
                     </div>
                     <ul class="header-user-links">
                         <li>
-                            <a href="<%=basePath%>user/login.jsp">Login or Register</a>
+                            <a href="<%=basePath%>user/login.jsp">登录或注册</a>
                         </li>
                     </ul>
                 </div>
@@ -168,12 +182,13 @@
                                         <div class="tab-container">
                                             <!-- 登录 -->
                                             <div id="header-tab-login" class="tab-panel active">
-                                                <form method="post" action="#" class="login form-login">
+                                                <form method="post" action="<c:url value='/UserServlet'/>" class="login form-login">
+                                                    <input type="hidden" name="method" value="login" />
                                                     <p class="form-row form-row-wide">
-                                                        <input type="email" " placeholder="Email " class="input-text ">
+                                                        <input type="text"  placeholder="用户名 " name="loginname" class="input-text ">
                                                     </p>
                                                     <p class="form-row form-row-wide ">
-                                                        <input type="password " class="input-text " placeholder="password ">
+                                                        <input type="password " class="input-text " name="loginpass" placeholder="password ">
                                                     </p>
                                                     <p class="form-row ">
                                                         <label class="form-checkbox ">
@@ -182,7 +197,7 @@
                                                                    	记住我
                                                         </span>
                                                     </label>
-                                                        <input type="submit " class="button " value="登录 ">
+                                                        <input type="submit "  class="button btn btn-shop-now " value="登录 ">
                                                     </p>
                                                     <p class="lost_password ">
                                                         <a href="# ">忘记密码</a>
@@ -191,15 +206,19 @@
                                             </div>
                                             <!-- 注册 -->
                                             <div id="header-tab-rigister " class="tab-panel ">
-                                                <form method="post " action="# " class="register form-register ">
+                                                <form method="post " action="<c:url value='/UserServlet'/>" class="register form-register ">
+                                                    <input type="hidden" name="method" value="regist" />
                                                     <p class="form-row form-row-wide ">
-                                                        <input type="email " placeholder="Email " class="input-text ">
+                                                        <input type="email " placeholder="Email " name="email" class="input-text ">
                                                     </p>
                                                     <p class="form-row form-row-wide ">
-                                                        <input type="password " class="input-text " placeholder="Password ">
+                                                        <input type="text " class="input-text " name="loginname" placeholder="用户名 ">
+                                                    </p>
+                                                    <p class="form-row form-row-wide ">
+                                                        <input type="password " class="input-text " name="loginpass" placeholder="Password ">
                                                     </p>
                                                     <p class="form-row ">
-                                                        <input type="submit " class="button " value="注册 ">
+                                                        <input type="submit " class="button btn-shop-now" value="注册 ">
                                                     </p>
                                                 </form>
                                             </div>
@@ -210,9 +229,36 @@
 
 							</c:when>
 							<c:otherwise>
-								      ${sessionScope.sessionUser.loginname }&nbsp;&nbsp;|&nbsp;&nbsp;
+								     
+								  <div class="block-account block-header emeriss-dropdown">
+                                	<p>
+                                		<a href="javascript:void(0);" data-emeriss="emeriss-dropdown">
+                                    		 ${sessionScope.sessionUser.loginname }
+                                		</a>
+                                	</p>
+                                	<div class="header-account emeriss-submenu">
+                                    <div class="header-user-form-tabs">
+                                        
+
+                                        <!-- ----------登录/注册----------- -->
+                                        <div class="tab-container">
+                                            <!-- 登录 -->
+                                            <div id="header-tab-login" class="tab-panel active">
+                                               <ul id="login-dropdown-ul"  style="list-style:none;">
+                                               		<li><a class="login-dropdown" href="<c:url value='/OrderServlet?method=myOrders'/>"><span>查看订单</span></a></li>
+                                               		<li><a class="login-dropdown" ><span>修改密码</span></a></li>
+                                					<li><a class="login-dropdown"  href="<c:url value='/UserServlet?method=quit'/>" target="_parent">退出</a></li>
+                                               </ul>
+                                                   
+                                            </div>
+                                            <!-- 注册 -->
+                                            
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                            	
 								  
-								  <a href="<c:url value='/UserServlet?method=quit'/>" target="_parent">退出</a>
 							</c:otherwise>
 						</c:choose>
                             
@@ -239,69 +285,12 @@
                             <span></span>
                             <span></span>
                             </span>
-                            <a href="#" ></a>
+                        
                             <span class="text ">商品目录</span>
+                            
                         </div>
-                        <div class="block-content verticalmenu-content ">
-                            <ul class="emeriss-nav-vertical vertical-menu emeriss-clone-mobile-menu ">
-                                
-                                <li class="menu-item menu-item-has-children ">
-                                    <a title="Accessories " href="# " class="emeriss-menu-item-title ">二手书籍</a>
-                                    <span class="toggle-submenu "></span>
-                                    <ul role="menu " class=" submenu ">
-                                        <li class="menu-item ">
-                                            <a title="Audio " href="# " class="emeriss-item-title ">公共课</a>
-                                        </li>
-                                        <li class="menu-item ">
-                                            <a title="Clothing " href="# " class="emeriss-item-title ">学院</a>
-                                        </li>
-                                        <li class="menu-item ">
-                                            <a title="New Arrivals " href="# " class="emeriss-item-title ">其他</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item menu-item-has-children ">
-                                
-                                    <a title="Accessories " href="# " class="emeriss-menu-item-title ">二手服饰</a>
-                                    <span class="toggle-submenu "></span>
-                                    <ul role="menu " class=" submenu ">
-                                        <li class="menu-item ">
-                                            <a title="Audio " href="# " class="emeriss-item-title ">上衣</a>
-                                        </li>
-                                        <li class="menu-item ">
-                                            <a title="Clothing " href="# " class="emeriss-item-title ">下装</a>
-                                        </li>
-                                        <li class="menu-item ">
-                                            <a title="New Arrivals " href="# " class="emeriss-item-title ">鞋</a>
-                                        </li>
-                                        <li class="menu-item ">
-                                            <a title="Accessories " href="# " class="emeriss-item-title ">配饰</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item menu-item-has-children ">
-                                    <a title="Accessories " href="# " class="emeriss-menu-item-title ">二手电子产品</a>
-                                    <span class="toggle-submenu "></span>
-                                    <ul role="menu " class=" submenu ">
-                                        <li class="menu-item ">
-                                            <a title="Audio " href="# " class="emeriss-item-title ">手机</a>
-                                        </li>
-                                        <li class="menu-item ">
-                                            <a title="Clothing " href="# " class="emeriss-item-title ">平板电脑</a>
-                                        </li>
-                                        <li class="menu-item ">
-                                            <a title="New Arrivals " href="# " class="emeriss-item-title ">电脑</a>
-                                        </li>
-                                        <li class="menu-item ">
-                                            <a title="Accessories " href="# " class="emeriss-item-title ">各种外设</a>
-                                        </li>
-                                        
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                        
                     </div>
-                  <a href="<c:url value='/CategoryServlet?method=findAll'/>">111</a>  
                     <div class="header-nav ">
                         <div class="container-wapper " id="menu">
                             
@@ -394,231 +383,6 @@
     <!-- --------------------------------------------------- -->
     <div>
         <div class="fullwidth-template ">
-            <!-- -----------------------第一层（二手书籍）-------------------- -->
-            <div class="banner-wrapp ">
-                <div class="container ">
-                    <div class="row ">
-                        <!-- -----------左侧滚动banner--------- -->
-                        <div class="col-lg-6 silider-wrapp ">
-                            <div class="home-slider ">
-                                <div class="slider-owl owl-slick equal-container nav-center " data-slick='{"autoplay ":true, "autoplaySpeed ":9000, "arrows ":false, "dots ":true, "infinite ":true, "speed ":1000, "rows ":1}' data-responsive='[{"breakpoint
-                                                            ":"2000 ","settings ":{"slidesToShow ":1}}]'>
-                                    <div class="slider-item style7 ">
-                                        <div class="slider-inner equal-element ">
-                                            <div class="slider-infor ">
-                                                <h5 class="title-small ">
-                                                    Sale up to 40% off!
-                                                </h5>
-                                                <h3 class="title-big ">
-                                                    Backpacks for business men
-                                                </h3>
-                                                <div class="price ">
-                                                    New Price:
-                                                    <span class="number-price ">
-                                                $270.00
-                                            </span>
-                                                </div>
-                                                <a href="# " class="button btn-browse ">Browse</a>
-                                                <a href="# " class="button btn-shop-the-look bgroud-style ">Shop now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slider-item style8 ">
-                                        <div class="slider-inner equal-element ">
-                                            <div class="slider-infor ">
-                                                <h5 class="title-small ">
-                                                    Black Friday Sale!
-                                                </h5>
-                                                <h3 class="title-big ">
-                                                    1/2 OFF Admiral g9 Back Pack
-                                                </h3>
-                                                <div class="price ">
-                                                    Save Price:
-                                                    <span class="number-price ">
-                                                $170.00
-                                            </span>
-                                                </div>
-                                                <a href="# " class="button btn-shop-product ">Shop now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slider-item style9 ">
-                                        <div class="slider-inner equal-element ">
-                                            <div class="slider-infor ">
-                                                <h5 class="title-small ">
-                                                    Emeriss Backpack Collection
-                                                </h5>
-                                                <h3 class="title-big ">
-                                                    The inspiration behind our store
-                                                </h3>
-                                                <a href="# " class="button btn-chekout ">Shop now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- --------------------------------- -->
-                        <div class="col-lg-6 col-md-6 col-sm-12 ">
-                            <div class="banner ">
-                                <div class="item-banner style5 ">
-                                    <div class="inner ">
-                                        <div class="banner-content ">
-                                            <h3 class="title ">购买二手书籍</h3>
-                                            <a href="# " class="button btn-shop-now ">Shop now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ----------------------------------------------------------- -->
-            <h3 class="custommenu-title-blog ">
-                二手服饰
-            </h3>
-            <!-- -----------------------第二层（二手服饰）-------------------- -->
-            <div class="home-slider fullwidth rows-space-60 ">
-                <div class="slider-owl owl-slick equal-container nav-center equal-container " data-slick='{"autoplay ":true, "autoplaySpeed ":10000, "arrows ":true, "dots ":true, "infinite ":true, "speed ":800, "rows ":1}' data-responsive='[{"breakpoint
-                                                            ":"2000 ","settings ":{"slidesToShow ":1}}]'>
-                    <div class="slider-item style4 ">
-                        <div class="slider-inner equal-element ">
-                            <div class="container ">
-                                <div class="slider-infor ">
-                                    <h5 class="title-small ">
-                                        Sale up to 40% off!
-                                    </h5>
-                                    <h3 class="title-big ">
-                                        In stock with<br/> 4 colors
-                                    </h3>
-                                    <div class="price ">
-                                        New Price:
-                                        <span class="number-price ">
-                                                    $25.00
-                                                </span>
-                                    </div>
-                                    <a href="# " class="button btn-browse ">Browse</a>
-                                    <a href="# " class="button btn-shop-the-look bgroud-style ">Shop now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-item style5 ">
-                        <div class="slider-inner equal-element ">
-                            <div class="container ">
-                                <div class="slider-infor ">
-                                    <h5 class="title-small ">
-                                        Start weekend off!
-                                    </h5>
-                                    <h3 class="title-big ">
-                                        Huge sale<br/> Up to 75% Off
-                                    </h3>
-                                    <div class="when-code ">
-                                        When Use Code:
-                                        <span class="number-code ">
-                                                    EMERISS
-                                                </span>
-                                    </div>
-                                    <a href="# " class="button btn-browse ">Browse</a>
-                                    <a href="# " class="button btn-view-promotion bgroud-style ">VIEW ALL</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-item style6 ">
-                        <div class="slider-inner equal-element ">
-                            <div class="container ">
-                                <div class="slider-infor ">
-                                    <h5 class="title-small ">
-                                        Make your style Difference!
-                                    </h5>
-                                    <h3 class="title-big ">
-                                        Let’s create<br/> Your own style
-                                    </h3>
-                                    <div class="price ">
-                                        Template Price:
-                                        <span class="number-price ">
-                                                    $89.00
-                                                </span>
-                                    </div>
-                                    <a href="# " class="button btn-browse ">Browse</a>
-                                    <a href="# " class="button btn-lets-create bgroud-style ">Let’s Create</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="banner-wrapp ">
-                <div class="container ">
-                    <div class="row ">
-                        <div class="col-lg-3 col-md-3 col-sm-12 ">
-                            <div class="banner ">
-                                <div class="item-banner style4 ">
-                                    <div class="inner ">
-                                        <div class="banner-content ">
-                                            <h4 class="emeriss-subtitle ">Beard Essential!</h4>
-                                            <h3 class="title ">Marines TeeTop</h3>
-
-                                            <a href="# " class="button btn-shop-now ">Shop now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container ">
-                            <div class="row ">
-                                <div class="col-lg-3 col-md-3 col-sm-12 ">
-                                    <div class="banner ">
-                                        <div class="item-banner style4 ">
-                                            <div class="inner ">
-                                                <div class="banner-content ">
-                                                    <h4 class="emeriss-subtitle ">Beard Essential!</h4>
-                                                    <h3 class="title ">Marines TeeTop</h3>
-
-                                                    <a href="# " class="button btn-shop-now ">Shop now</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 ">
-                                    <div class="banner ">
-                                        <div class="item-banner style4 ">
-                                            <div class="inner ">
-                                                <div class="banner-content ">
-                                                    <h4 class="emeriss-subtitle ">Beard Essential!</h4>
-                                                    <h3 class="title ">Marines TeeTop</h3>
-
-                                                    <a href="# " class="button btn-shop-now ">Shop now</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 ">
-                                    <div class="banner ">
-                                        <div class="item-banner style4 ">
-                                            <div class="inner ">
-                                                <div class="banner-content ">
-                                                    <h4 class="emeriss-subtitle ">Beard Essential!</h4>
-                                                    <h3 class="title ">Marines TeeTop</h3>
-                                                    <a href="# " class="button btn-shop-now ">Shop now</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ----------------------------------------------------------- -->
-            <h3 class="custommenu-title-blog ">
-                二手电子产品
-            </h3>
             <!-- -----------------------第三层（二手电子产品）---------------- -->
             <div class="home-slider-banner ">
                 <div class="container ">
@@ -631,19 +395,19 @@
                                         <div class="slider-inner equal-element ">
                                             <div class="slider-infor ">
                                                 <h5 class="title-small ">
-                                                    Sale up to 40% off!
+                                                     	折扣40% !
                                                 </h5>
                                                 <h3 class="title-big ">
-                                                    Backpacks for business men
+                                                   
                                                 </h3>
                                                 <div class="price ">
-                                                    New Price:
+                                                    
                                                     <span class="number-price ">
-                                                $270.00
+                                                
                                             </span>
                                                 </div>
                                                 <a href="# " class="button btn-browse ">Browse</a>
-                                                <a href="# " class="button btn-shop-the-look bgroud-style ">Shop now</a>
+                                                <a href="# " class="button btn-shop-the-look bgroud-style ">购物</a>
                                             </div>
                                         </div>
                                     </div>
@@ -651,15 +415,15 @@
                                         <div class="slider-inner equal-element ">
                                             <div class="slider-infor ">
                                                 <h5 class="title-small ">
-                                                    Black Friday Sale!
+                                                    apple电脑
                                                 </h5>
                                                 <h3 class="title-big ">
-                                                    1/2 OFF Admiral g9 Back Pack
+                                                    5折起
                                                 </h3>
                                                 <div class="price ">
-                                                    Save Price:
+                                                    	价格
                                                     <span class="number-price ">
-                                                $170.00
+                                                	￥1500
                                             </span>
                                                 </div>
                                                 <a href="# " class="button btn-shop-product ">Shop now</a>
@@ -670,12 +434,12 @@
                                         <div class="slider-inner equal-element ">
                                             <div class="slider-infor ">
                                                 <h5 class="title-small ">
-                                                    Emeriss Backpack Collection
+                                                    9成新
                                                 </h5>
                                                 <h3 class="title-big ">
-                                                    The inspiration behind our store
+                                                    上新多款
                                                 </h3>
-                                                <a href="# " class="button btn-chekout ">Shop now</a>
+                                                <a href="# " class="button btn-chekout ">购买</a>
                                             </div>
                                         </div>
                                     </div>
@@ -714,6 +478,9 @@
                 </div>
             </div>
             <!-- ----------------------------------------------------------- -->
+            <!-- -----------------------第一层（二手书籍）-------------------- -->
+           </div>
+           </div>
 
             <!-- -------------------footer(website)------------------------ -->
             <footer class="footer style7 ">

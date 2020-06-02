@@ -640,10 +640,10 @@
 											</div>
 											<div class="price ">
 												<del>
-													原价&yen;${goods.currPrice }
+													原价&yen;${goods.price }
 												</del>
 												<ins>
-													现价&yen;${goods.price }
+													现价&yen;${goods.currPrice }
 												</ins>
 											</div>
 										</div>

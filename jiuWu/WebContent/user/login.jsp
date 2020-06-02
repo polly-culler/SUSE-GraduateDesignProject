@@ -244,7 +244,7 @@
                                             <div id="header-tab-login" class="tab-panel active">
                                                 <form method="post" action="#" class="login form-login">
                                                     <p class="form-row form-row-wide">
-                                                        <input type="email" " placeholder="Email " class="input-text ">
+                                                        <input type="email"  placeholder="Email " class="input-text ">
                                                     </p>
                                                     <p class="form-row form-row-wide ">
                                                         <input type="password " class="input-text " placeholder="password ">

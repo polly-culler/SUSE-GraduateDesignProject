@@ -205,7 +205,7 @@ private GoodsService goodsService = new GoodsService();
 		 */
 		pb.setUrl(url);
 		req.setAttribute("pb", pb);
-		return "f:/user/index.jsp";
+		return "f:/user/products.jsp";
 	}
 	
 	/**

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -79,7 +80,7 @@ public class OrderServlet extends BaseServlet {
 	public String paymentPre(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		req.setAttribute("order", orderService.load(req.getParameter("oid")));
-		return "f:/user/checkout.jsp";
+		return "f:/user/payment.jsp";
 	}
 
 	/**
@@ -194,14 +195,14 @@ public class OrderServlet extends BaseServlet {
 		if(!bool) {
 			req.setAttribute("code", "error");
 			req.setAttribute("msg", "无效的签名，支付失败！（你不是好人）");
-			return "f:/jsps/msg.jsp";
+			return "f:/user/500.jsp";
 		}
 		if(r1_Code.equals("1")) {
 			orderService.updateStatus(r6_Order, 2);
 			if(r9_BType.equals("1")) {
 				req.setAttribute("code", "success");
 				req.setAttribute("msg", "恭喜，支付成功！");
-				return "f:/jsps/msg.jsp";				
+				return "f:/user/500.jsp";				
 			} else if(r9_BType.equals("2")) {
 				resp.getWriter().print("success");
 			}
@@ -227,12 +228,12 @@ public class OrderServlet extends BaseServlet {
 		if(status != 1) {
 			req.setAttribute("code", "error");
 			req.setAttribute("msg", "状态不对，不能取消！");
-			return "f:/jsps/msg.jsp";
+			return "f:/user/500.jsp";
 		}
 		orderService.updateStatus(oid, 5);//设置状态为取消！
 		req.setAttribute("code", "success");
 		req.setAttribute("msg", "您的订单已取消，您不后悔吗！");
-		return "f:/jsps/msg.jsp";		
+		return "f:/user/500.jsp";		
 	}
 	
 	/**
@@ -253,12 +254,12 @@ public class OrderServlet extends BaseServlet {
 		if(status != 3) {
 			req.setAttribute("code", "error");
 			req.setAttribute("msg", "状态不对，不能确认收货！");
-			return "f:/jsps/msg.jsp";
+			return "f:/user/500.jsp";
 		}
 		orderService.updateStatus(oid, 4);//设置状态为交易成功！
 		req.setAttribute("code", "success");
 		req.setAttribute("msg", "恭喜，交易成功！");
-		return "f:/jsps/msg.jsp";		
+		return "f:/user/500.jsp";		
 	}
 	
 	/**
@@ -276,7 +277,7 @@ public class OrderServlet extends BaseServlet {
 		req.setAttribute("order", order);
 		String btn = req.getParameter("btn");//btn说明了用户点击哪个超链接来访问本方法的
 		req.setAttribute("btn", btn);
-		return "/user/OrderDetail.jsp";
+		return "/user/orderSummary.jsp";
 	}
 	
 	/**
@@ -297,13 +298,20 @@ public class OrderServlet extends BaseServlet {
 		if(cartItemList.size() == 0) {
 			req.setAttribute("code", "error");
 			req.setAttribute("msg", "您没有选择要购买的图书，不能下单！");
-			return "f:/jsps/msg.jsp";
+			return "f:/user/500.jsp";
 		}
 		/*
 		 * 2. 创建Order
 		 */
 		Order order = new Order();
-		order.setOid(CommonUtils.uuid());//设置主键
+		//设置主键id
+		/*
+		 * 当前时间毫秒值+4位随机数
+		 */
+		
+		String id = System.currentTimeMillis()+new Random().nextInt(9999)+"";
+		order.setOid(id);//设置主键
+		
 		order.setOrdertime(String.format("%tF %<tT", new Date()));//下单时间
 		order.setStatus(1);//设置状态，1表示未付款
 		order.setAddress(req.getParameter("address"));//设置收货地址
@@ -343,7 +351,7 @@ public class OrderServlet extends BaseServlet {
 		 * 5. 保存订单，转发到ordersucc.jsp
 		 */
 		req.setAttribute("order", order);
-		return "f:/jsps/order/ordersucc.jsp";
+		return "f:/user/payment.jsp";
 	}
 	
 	/**
@@ -378,7 +386,7 @@ public class OrderServlet extends BaseServlet {
 		 */
 		pb.setUrl(url);
 		req.setAttribute("pb", pb);
-		return "f:/jsps/order/list.jsp";
+		return "f:/user/orderList.jsp";
 	}
 
 }

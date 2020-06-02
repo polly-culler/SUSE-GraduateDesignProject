@@ -112,7 +112,18 @@
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
                 </div>
-
+				<!-- search form -->
+				<form action="<c:url value='/AdminGoodsServlet'/>" method="get" class="sidebar-form">
+			        <input type="hidden" name="method" value="findByGname"/>
+			        <div class="input-group">
+			          <input type="text" name="gname" class="form-control" placeholder="Search...">
+			              <span class="input-group-btn">
+			                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+			                </button>
+			              </span>
+			        </div>
+			    </form>
+				<!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li >
@@ -131,7 +142,7 @@
                         
                     </li>
                     <li >
-                        <a href="<%=basePath%>admin/order.jsp">
+                        <a href="/jiuWu/AdminOrderServlet?method=findAll">
                             <i class="fa fa-list-alt"></i> <span>订单管理</span>
 
                         </a>
@@ -145,17 +156,27 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-          	 <section class="content-header">
-		      <h1>
-		        	商品管理
-		        <a href="/jiuWu/AdminGoodsServlet?method=addPre"><small>添加商品</small></a>
-		      </h1>
-		      <ol class="breadcrumb">
-		        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		        <li class="active">Dashboard</li>
-		      </ol>
-		    </section>
-
+            <section class="content">
+            	<div class="row">
+	            	<div class="col-md-6">
+		          		<div class="box box-default">
+		            		<div class="box-header with-border">
+		              			<i class="fa fa-bullhorn"></i>
+		         		        <h3 class="box-title">商品管理</h3>
+		            		</div>
+		            		<!-- /.box-header -->
+		            		<div class="box-body">
+		              			<div class="callout callout-warning">
+		                			<h4><a href="/jiuWu/AdminGoodsServlet?method=addPre" style="color:#ffffff;">添加商品</a></h4>
+					                <p>高级搜索</p>
+		        		        </div>
+	            			<!-- /.box-body -->
+	          				</div>
+	          		<!-- /.box -->
+	        		   </div>
+	               </div>
+	          </div>
+            </section>
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">

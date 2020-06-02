@@ -222,7 +222,7 @@
 			              <!-- /.box-body -->
 			
 			              <div class="box-footer">
-			                <button type="submit" class="btn btn-warning">添加一级分类</button>
+			                <button type="submit" class="btn btn-warning">修改一级分类</button>
 			              </div>
 			            </form>
 	          	   </div>

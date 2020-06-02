@@ -14,24 +14,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="<%=basePath%>user/assets/images/favicon.png" />
     <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/jquery-ui.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/chosen.min.css">
-    <link rel="stylesheet" href="assets/css/pe-icon-7-stroke.css">
-    <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
-    <link rel="stylesheet" href="assets/css/lightbox.min.css">
-    <link rel="stylesheet" href="assets/js/fancybox/source/jquery.fancybox.css">
-    <link rel="stylesheet" href="assets/css/jquery.scrollbar.min.css">
-    <link rel="stylesheet" href="assets/css/mobile-menu.css">
-    <link rel="stylesheet" href="assets/fonts/flaticon/flaticon.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="<%=basePath%>user/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=basePath%>user/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<%=basePath%>user/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="<%=basePath%>user/assets/css/animate.min.css">
+    <link rel="stylesheet" href="<%=basePath%>user/assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="<%=basePath%>user/assets/css/slick.css">
+    <link rel="stylesheet" href="<%=basePath%>user/assets/css/chosen.min.css">
+    <link rel="stylesheet" href="<%=basePath%>user/assets/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="<%=basePath%>user/assets/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="<%=basePath%>user/assets/css/lightbox.min.css">
+    <link rel="stylesheet" href="<%=basePath%>user/assets/js/fancybox/source/jquery.fancybox.css">
+    <link rel="stylesheet" href="<%=basePath%>user/assets/css/jquery.scrollbar.min.css">
+    <link rel="stylesheet" href="<%=basePath%>user/assets/css/mobile-menu.css">
+    <link rel="stylesheet" href="<%=basePath%>user/assets/fonts/flaticon/flaticon.css">
+    <link rel="stylesheet" href="<%=basePath%>user/assets/css/style.css">
+
+	<script src="<%=basePath%>user/assets/js/jquery-1.12.4.min.js "></script>
+    <script src="<%=basePath%>user/assets/js/navbar.js "></script>
+	 <style>
+        #boxImg {
+            width: 40px;
+            background: white;
+            position: absolute;
+            top: -6%;
+            left: 48%;
+        }
+        
+        .Box {
+            width: 80%;
+            border: 1px solid #ccc;
+            margin-top: 4rem;
+            padding: 1.25rem;
+            border-radius: 4px;
+            position: relative;
+            margin: auto;
+        }
+        
+        .MessageBox {
+            margin-top: 4rem;
+        }
+        
+        .deliver {
+            margin: auto;
+            text-align: center;
+        }
+        
+        .goods-detail {
+            margin: auto;
+            text-align: center;
+        }
+        
+        .payment-add,
+        .payment {
+            margin-top: 3rem;
+        }
+    </style>
 </head>
 
 <body class="inblog-page">
@@ -308,55 +349,259 @@
     <!-- ------------------contain-------------------- -->
     <div class="shipping-address-form-wrapp ">
         <div class="shipping-address-form checkout-form ">
-            <div class="row-col-1 row-col ">
-                <div class="shipping-address ">
-                    <h3 class="title-form ">
-                        收货地址
-                    </h3>
-                    <p class="form-row form-row-first ">
-                        <label class="text ">收货人</label>
-                        <input title="first " type="text " class="input-text ">
-                    </p>
+            <div class="container">
+            	<div class="breadcrumb-trail breadcrumbs ">
+					<ul class="trail-items breadcrumb ">
+						<li class="trail-item trail-begin ">
+								<a href="<%=basePath%>user/index.jsp ">首页</a>
+							</li>
+						<li class="trail-item trail-end active "><a href="<c:url value='/OrderServlet?method=myOrders'/>"> <span>
+									后退 </span>
+						</a></li>
+						
+					</ul>
+				</div>
+            
+            
+            
+            
+            <div class="row">
+            	<h1 style="text-align: center;">
+            		订单详情
+            	</h1>
+            	<p style="text-align: center;">订单号：${order.oid }</p>
+            </div>
+            <hr>
+            <div class="row">
+            	<h5 style="text-align: center;">下单时间</h5>
+            	<p style="text-align: center;">${order.ordertime}</p>
+            	<h5 style="text-align: center;">订单号</h5>
+            	<p style="text-align: center;">${order.oid}</p>
+            	<h5 style="text-align: center;">订单合计</h5>
+            	<p style="text-align: center;">￥${order.total}</p>
+            </div>
+            
+            <div class="MessageBox">
+            <div class="Box">
+                <img id="boxImg" src="<%=basePath %>user/assets/images/jiuWu/box.png">
+                <div class="deliver row">
+                    <h5 id="deliverAdd">送货地址</h5>
+                    <span>${order.address}</span>
+                    <h4>
+                    	 <c:choose>
+							<c:when test="${order.status eq 1 }">等待付款</c:when>
+							<c:when test="${order.status eq 2 }">准备发货</c:when>
+							<c:when test="${order.status eq 3 }">等待确认</c:when>
+							<c:when test="${order.status eq 4 }">交易成功</c:when>
+							<c:when test="${order.status eq 5 }">已取消</c:when>
+						</c:choose>	
+                    </h4>
+                </div>
+                <hr>
+                <div class="goods row">
+                    <div class="goods-detail">
+                        <h3>产品</h3>
+                        
+                        <div class="shoppingcart-content">
+                            <form action="shoppingcart.html" class="cart-form">
+                                <table class="shop_table">
+                                    <thead>
+                                    <tr>
+                                        
+                                        <th class="product-thumbnail"></th>
+                                        <th class="product-name"></th>
+                                        <th class="product-price"></th>
+                                        <th class="product-quantity"></th>
+                                        <th class="product-subtotal"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach items="${order.orderItemList }" var="orderItem">
+	                                    <tr class="cart_item">
+	                                        
+	                                        <td class="product-thumbnail">
+	                                            <a href="<c:url value='/GoodsServlet?method=load&gid=${orderItem.goods.gid }'/>">
+	                                                <img src="<c:url value='/${orderItem.goods.image_b }'/>" alt="img" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+	                                            </a>
+	                                        </td>
+	                                        <td class="product-name" data-title="Product">
+	                                            <a href="#" class="title">${orderItem.goods.gname}</a>
+	                                            
+	                                        </td>
+	                                        <td class="product-quantity" data-title="Quantity">
+	                                           <h5> X${orderItem.quantity }</h5><h4>
+	                                        </h4></td>
+	                                        <td class="product-price" data-title="Price">
+														<span class="woocommerce-Price-amount amount">
+															<span class="woocommerce-Price-currencySymbol">
+																￥${orderItem.subtotal }
+															</span>
+															 
+														</span>
+	                                        </td>
+	                                    </tr>
+                                    </c:forEach>
+                                    
+                                    
+                                    </tbody>
+                                </table>
+                            </form>
+                            
+                        </div>
+                        
+                        
+                    </div>
+
                 </div>
             </div>
-            <div class="row-col-2 row-col ">
-                <div class="your-order ">
-                    <h3 class="title-form ">
-                        你的订单
-                    </h3>
-                    <ul class="list-product-order ">
-                        <li class="product-item-order ">
-                            <div class="product-thumb ">
-                                <a href="# ">
-                                    <img src="assets/images/item-order1.jpg " alt="img ">
-                                </a>
-                            </div>
-                            <div class="product-order-inner ">
-                                <h5 class="product-name ">
-                                    <a href="# ">3D Dining Chair</a>
-                                </h5>
-                                <span class="attributes-select attributes-color ">Black,</span>
-                                <span class="attributes-select attributes-size ">XXL</span>
-                                <div class="price ">
-                                    $45
-                                    <span class="count ">x1</span>
-                                </div>
-                            </div>
-                        </li>
+            <div class="payment-add row">
+                <div class="col-md-6" style="text-align: right;">
+                    <h3>账单地址</h3>
+                </div>
+                <div class="col-md-6">
+                    <p>${order.address}</p>
+                </div>
 
-                    </ul>
-                    <div class="order-total ">
-                        <span class="title ">
-                   Total Price:
-               </span>
-                        <span class="total-price ">
-                   $95
-               </span>
+            </div>
+            <hr style="width: 80%; color: rgb(204, 204, 204); ">
+            <div class="payment row">
+                <div class="col-md-6">
+                    <h3 style="text-align: right;">支付方式</h3>
+                </div>
+                <div class="col-md-6">
+                    <p>在线支付</p>
+                </div>
+            </div>
+            <hr style="width: 80%;">
+            <div class="payment-total row">
+                <div class="col-md-6">
+                    <h4 style="text-align: right;">汇总</h4>
+                </div>
+                <div class="col-md-6">
+                    <div class="totalPrice row">
+                        <p class="col-md-6" style="text-align: left;margin-bottom: 0px;"><b>商品合计</b></p>
+                        <p class="col-ms-6" style="text-align: left;margin-bottom: 0px;">￥${order.total }</p>
+                        <p class="col-md-6" style="text-align: left;margin-bottom: 0px;"><b>送货费</b></p>
+                        <p class="col-ms-6" style="text-align: left;margin-bottom: 0px;">￥0</p>
+                        <hr style="width: 80%; margin-left: 0px;">
+                        <h3 class="col-md-6" style="text-align: left;">订单合计</h3>
+                        <p class="col-md-6" style="text-align: left;">￥${order.total }</p>
+                        <div class="col-md-6"></div>
+                        <div class="control-cart col-md-6 " style="text-align: left;">
+                   
+                                <c:if test="${order.status eq 1 }">
+									<a href="<c:url value='/OrderServlet?method=paymentPre&oid=${order.oid }'/>" >
+										<button class="button btn-continue-shopping">付款</button>
+									</a><br/>
+								</c:if>
+								<c:if test="${order.status eq 1 and btn eq 'cancel'}">
+								    <a id="cancel" href="<c:url value='/OrderServlet?method=cancel&oid=${order.oid }'/>">
+								    	<button class="button btn-continue-shopping">取消订单</button>
+								    </a><br/>
+								</c:if>
+								<c:if test="${order.status eq 3 and btn eq 'confirm'}">
+									<a id="confirm" href="<c:url value='/OrderServlet?method=confirm&oid=${order.oid }'/>">
+										<button class="button btn-continue-shopping">确认收货</button>
+									</a><br/>
+								</c:if>	
+                            </div>
                     </div>
+				
                 </div>
             </div>
         </div>
-
+            
+            
+           <%--  <div class="row">
+			    <div class="col">
+			    <div class="main-content-cart main-content col-sm-12">
+			                    <h3 class="custom_blog_title">
+			                      	 订单详情
+			                    </h3>
+			<div class="address">
+			    <b>订单号：${order.oid }</b>
+			    <h4>地址信息:${order.address}</h4>
+			    <i>下单时间：${order.ordertime}</i>
+			</div>
+                    <div class="page-main-content">
+                        <div class="shoppingcart-content">
+                            <form action="shoppingcart.html" class="cart-form">
+                                <table class="shop_table">
+                                    <thead>
+                                    <tr>
+                                        
+                                        <th class="product-thumbnail"></th>
+                                        <th class="product-name"></th>
+                                        <th class="product-price"></th>
+                                        <th class="product-quantity"></th>
+                                        <th class="product-subtotal"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach items="${order.orderItemList }" var="orderItem">
+	                                    <tr class="cart_item">
+	                                        
+	                                        <td class="product-thumbnail">
+	                                            <a href="<c:url value='/GoodsServlet?method=load&gid=${orderItem.goods.gid }'/>">
+	                                                <img src="<c:url value='/${orderItem.goods.image_b }'/>" alt="img" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+	                                            </a>
+	                                        </td>
+	                                        <td class="product-name" data-title="Product">
+	                                            <a href="#" class="title">${orderItem.goods.gname}</a>
+	                                            
+	                                        </td>
+	                                        <td class="product-quantity" data-title="Quantity">
+	                                           <h5> X${orderItem.quantity }</h5><h4>
+	                                        </h4></td>
+	                                        <td class="product-price" data-title="Price">
+														<span class="woocommerce-Price-amount amount">
+															<span class="woocommerce-Price-currencySymbol">
+																￥${orderItem.subtotal }
+															</span>
+															 
+														</span>
+	                                        </td>
+	                                    </tr>
+                                    </c:forEach>
+                                    
+                                    
+                                    <tr>
+                                        <td class="actions">
+                                            
+                                            <div class="order-total">
+														<span class="title">总计：</span>
+                                                <span class="total-price">
+															￥${order.total }
+														</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                            <div class="control-cart">
+                   
+                                <c:if test="${order.status eq 1 }">
+									<a href="<c:url value='/OrderServlet?method=paymentPre&oid=${order.oid }'/>" class="pay"></a><br/>
+								</c:if>
+								<c:if test="${order.status eq 1 and btn eq 'cancel'}">
+								    <a id="cancel" href="<c:url value='/OrderServlet?method=cancel&oid=${order.oid }'/>">
+								    	<button class="button btn-continue-shopping">取消订单</button>
+								    </a><br/>
+								</c:if>
+								<c:if test="${order.status eq 3 and btn eq 'confirm'}">
+									<a id="confirm" href="<c:url value='/OrderServlet?method=confirm&oid=${order.oid }'/>">
+										<button class="button btn-continue-shopping">确认收货</button>
+									</a><br/>
+								</c:if>	
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div> --%>
+		</div>
+		</div>
     </div>
 
 
@@ -467,25 +712,26 @@
     </a>
     <!---------------------------------------------------->
     <!------------------------js----------------------  -->
-    <script src="assets/js/jquery-1.12.4.min.js"></script>
-    <script src="assets/js/jquery.plugin-countdown.min.js"></script>
-    <script src="assets/js/jquery-countdown.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/magnific-popup.min.js"></script>
-    <script src="assets/js/isotope.min.js"></script>
-    <script src="assets/js/jquery.scrollbar.min.js"></script>
-    <script src="assets/js/jquery-ui.min.js"></script>
-    <script src="assets/js/mobile-menu.js"></script>
-    <script src="assets/js/chosen.min.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/jquery.elevateZoom.min.js"></script>
-    <script src="assets/js/jquery.actual.min.js"></script>
-    <script src="assets/js/fancybox/source/jquery.fancybox.js"></script>
-    <script src="assets/js/lightbox.min.js"></script>
-    <script src="assets/js/owl.thumbs.min.js"></script>
-    <script src="assets/js/jquery.scrollbar.min.js"></script>
-    <script src="assets/js/frontend-plugin.js"></script>
+    <script src="<%=basePath%>user/assets/js/jquery-1.12.4.min.js "></script>
+    <script src="<%=basePath%>user/assets/js/jquery.plugin-countdown.min.js "></script>
+    <script src="<%=basePath%>user/assets/js/jquery-countdown.min.js "></script>
+    <script src="<%=basePath%>user/assets/js/bootstrap.min.js "></script>
+    <script src="<%=basePath%>user/assets/js/owl.carousel.min.js "></script>
+    <script src="<%=basePath%>user/assets/js/magnific-popup.min.js "></script>
+    <script src="<%=basePath%>user/assets/js/isotope.min.js "></script>
+    <script src="<%=basePath%>user/assets/js/jquery.scrollbar.min.js "></script>
+    <script src="<%=basePath%>user/assets/js/jquery-ui.min.js "></script>
+    <script src="<%=basePath%>user/assets/js/mobile-menu.js "></script>
+    <script src="<%=basePath%>user/assets/js/chosen.min.js "></script>
+    <script src="<%=basePath%>user/assets/js/slick.js "></script>
+    <script src="<%=basePath%>user/assets/js/jquery.elevateZoom.min.js "></script>
+    <script src="<%=basePath%>user/assets/js/jquery.actual.min.js "></script>
+    <script src="<%=basePath%>user/assets/js/fancybox/source/jquery.fancybox.js "></script>
+    <script src="<%=basePath%>user/assets/js/lightbox.min.js "></script>
+    <script src="<%=basePath%>user/assets/js/owl.thumbs.min.js "></script>
+    <script src="<%=basePath%>user/assets/js/jquery.scrollbar.min.js "></script>
+    <script src='https://ditu.google.cn/maps/api/js?key=AIzaSyC3nDHy1dARR-Pa_2jjPCjvsOR4bcILYsM'></script>
+    <script src="<%=basePath%>user/assets/js/frontend-plugin.js "></script>
 </body>
 
 </html>

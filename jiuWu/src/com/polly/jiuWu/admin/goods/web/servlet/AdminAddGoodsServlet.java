@@ -110,7 +110,7 @@ public class AdminAddGoodsServlet extends BaseServlet {
 		 * 保存图片：
 		 * 1. 获取真实路径
 		 */
-		String savepath = this.getServletContext().getRealPath("/book_img");
+		String savepath = this.getServletContext().getRealPath("/img");
 		/*
 		 * 2. 创建目标文件
 		 */
@@ -210,7 +210,7 @@ public class AdminAddGoodsServlet extends BaseServlet {
 			throws ServletException, IOException {
 		request.setAttribute("msg", msg);
 		request.setAttribute("parents", new CategoryService().findParents());//所有一级分类
-		request.getRequestDispatcher("/admin/.jsp").
+		request.getRequestDispatcher("/admin/goods-add.jsp").
 				forward(request, response);
 	}
 

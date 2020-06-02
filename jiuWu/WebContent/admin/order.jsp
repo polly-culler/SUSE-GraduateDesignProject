@@ -37,6 +37,15 @@
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+	<style>
+		.nav-tabs-custom>.nav-tabs>li.active {
+		    border-top-color: #d79468;
+		}
+		a{
+			color: #d79468;
+		}
+	</style>
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -111,7 +120,18 @@
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
                 </div>
-
+				<!-- search form -->
+				<form action="<c:url value='/AdminGoodsServlet'/>" method="get" class="sidebar-form">
+			        <input type="hidden" name="method" value="findByCombination"/>
+			        <div class="input-group">
+			          <input type="text" name="gname" class="form-control" placeholder="Search...">
+			              <span class="input-group-btn">
+			                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+			                </button>
+			              </span>
+			        </div>
+			    </form>
+				<!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li>
@@ -121,18 +141,14 @@
                         </a>
 
                     </li>
-                    <li class="treeview active">
+                    <li >
                         <a href="#">
                             <i class="fa fa-table"></i> <span>商品管理</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i>二手书籍</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> 二手电子商品</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> 二手服饰</a></li>
-                        </ul>
+                        
                     </li>
                     <li>
                         <a href="<%=basePath%>admin/order.jsp">
@@ -149,73 +165,166 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <h1>
-                   	 订单管理
-                </h1>
-            </section>
+            
             <section class="content">
             	<div class="row">
-            		<div class="col-xs-12">
-            			<div class="box">
-				            <div class="box-header">
-				              <h3 class="box-title">Hover Data Table</h3>
-				            </div>
-				            <!-- /.box-header -->
-				            <div class="box-body">
-				              <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
-				                <thead>
-				                	<tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">Rendering engine</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Browser</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Platform(s)</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Engine version</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th></tr>
-				                </thead>
-				                <tbody>
-				              
-					                <tr role="row" class="odd">
-					                  <td class="sorting_1">Gecko</td>
-					                  <td class="">Camino 1.0</td>
-					                  <td class="">OSX.2+</td>
-					                  <td>1.8</td>
-					                  <td>A</td>
+            		<div class="col-md-12">
+			         	<%-- <div class="nav-tabs-custom">
+			         		<ul class="nav nav-tabs">
+			         			<li >
+			         				<a href="<c:url value='/admin/AdminOrderServlet?method=findByStatus&status=1'/>" data-toggle="tab">未付款</a>
+			         				
+			         			</li>
+			         			<li >
+			         				<a href="<c:url value='/AdminOrderServlet?method=findByStatus&status=2'/>" data-toggle="tab">未付款</a>
+			         				
+			         			</li>
+			         			<li >
+			         				<a href="<c:url value='/AdminOrderServlet?method=findByStatus&status=3'/>" data-toggle="tab">未付款</a>
+			         			</li>
+			         			<li >
+			         				<a href="<c:url value='/AdminOrderServlet?method=findByStatus&status=4'/>" data-toggle="tab">未付款</a>
+			         			</li>
+			         			<li >
+			         				<a href="<c:url value='/AdminOrderServlet?method=findByStatus&status=5'/>" data-toggle="tab">未付款</a>
+			         			</li>
+			         		</ul>
+			      <!--    <a href="<c:url value='/admin/AdminOrderServlet?method=findByStatus&status=1'/>" data-toggle="tab" aria-expanded="true">未付款</a>
+			              <a href="<c:url value='/admin/AdminOrderServlet?method=findByStatus&status=2'/>" data-toggle="tab" aria-expanded="false">已付款</a>
+			              <a href="<c:url value='/AdminOrderServlet?method=findByStatus&status=3'/>" data-toggle="tab" aria-expanded="false">已发货</a>
+			              <a href="<c:url value='/AdminOrderServlet?method=findByStatus&status=4'/>" data-toggle="tab" aria-expanded="false">交易成功</a>
+			              <a href="<c:url value='/AdminOrderServlet?method=findByStatus&status=5'/>" data-toggle="tab" aria-expanded="false">已取消</a>
+			        -->        
+			            </div> --%>
+			            <div class="tab-content">
+			              <div class="active tab-pane">
+			              <div class="row">
+					        <div class="col-xs-12">
+					          <div class="box">
+					            <div class="box-header">
+					              <h3 class="box-title">用户订单</h3>
+					
+					              <div class="box-tools">
+					                <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+					                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+					
+					                  <div class="input-group-btn">
+					                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+					                  </div>
+					                </div>
+					              </div>
+					            </div>
+					            <!-- /.box-header -->
+					            <div class="box-body table-responsive no-padding">
+					              <table class="table table-hover">
+					                <tbody><tr>
+					                  <th>订单号</th>
+					                  <th>下单时间</th>
+					                  <th>订单状态</th>
+					                  <th>操作</th>
 					                </tr>
-				                </tbody>
-				                
-				              </table>
-				            </div>
-				         </div>
-				         <div class="row">
-				         	<div class="col-sm-5">
-				              	<div class="dataTables_info" id="example2_info" role="status" aria-live="polite">
-				              		
-				              	</div>
-				            </div>
-				          	<div class="col-sm-7">
-				          		<div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-				          			<ul class="pagination">
-				          				<li class="paginate_button previous disabled" id="example2_previous">
-				          					<a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0">
-				          						Previous
-				          					</a>
-				          				</li>
-				          				<li class="paginate_button active">
-				          					<a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0">
-				          						1
-				          					</a>
-				          				</li>
-				          				
-				          				<li class="paginate_button next" id="example2_next">
-				          					<a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">
-				          						Next
-				          					</a>
-				          				</li>
-				  	        		</ul>
-				    		     </div>
-				    		  </div>
-				    		</div>
-				  		</div>
-				            </div>
-				            <!-- /.box-body -->
-				          </div>
-            		</div>
-            	</div> 
+					                <c:forEach items="${pb.beanList }" var="order">	
+					                <tr>
+					                  <td><a  href="<c:url value='/AdminOrderServlet?method=load&oid=${order.oid }'/>">${order.oid }</a></td>
+					                  <td>${order.ordertime }</td>
+					                  <td>
+					                  	<c:choose>
+											<c:when test="${order.status eq 1 }"><span class="label label-warning">等待付款</span></c:when>
+											<c:when test="${order.status eq 2 }"><span class="label label-info">准备发货</span></c:when>
+											<c:when test="${order.status eq 3 }"><span class="label label-info">等待确认</span></c:when>
+											<c:when test="${order.status eq 4 }"><span class="label label-success">交易成功</span></c:when>
+											<c:when test="${order.status eq 5 }"><span class="label label-danger">已取消</span></c:when>
+									
+										</c:choose>	
+					                  </td>
+					                  <td>
+					                  	<a href="<c:url value='/AdminOrderServlet?method=load&oid=${order.oid }'/>">查看</a>
+					                  	<c:if test="${order.status eq 1 }">
+											<a href="<c:url value='/AdminOrderServlet?method=load&oid=${order.oid }&btn=cancel'/>">取消</a><br/>						
+										</c:if>
+										<c:if test="${order.status eq 2 }">
+											<a href="<c:url value='/AdminOrderServlet?method=load&oid=${order.oid }&btn=deliver'/>">发货</a><br/>
+										</c:if>		
+					                  </td>
+					                </tr>
+					               </c:forEach>
+					              </tbody></table>
+					            </div>
+					            <!-- /.box-body -->
+					          </div>
+					          <!-- /.box -->
+					        </div>
+					      </div>
+			                <%-- <div class="row">
+						        <div class="col-xs-12">
+						          <div class="box">
+						            
+						            <!-- /.box-header -->
+						            <div class="box-body table-responsive no-padding ">
+						              <table class="table table-hover">
+						                <tbody>
+							                <tr>
+							                  <th>订单号</th>
+							                  <th>商品</th>
+							                  <th>价格</th>
+							                  <th>下单时间</th>
+							                  <th>订单状态</th>
+							                  <th>操作</th>
+							                </tr>
+							                <c:forEach items="${pb.beanList }" var="order">	
+								                <tr>
+								                  <td><a  href="<c:url value='/AdminOrderServlet?method=load&oid=${order.oid }'/>">${order.oid }</a></td>
+								                  <td>
+								                  	<c:forEach items="${order.orderItemList }" var="orderItem">
+	    												
+	    												<img style="width: 10%;" src="<c:url value='/${orderItem.goods.image_b }'/>"/>	
+	    														
+	    												
+  													</c:forEach>
+								                  </td>
+								                  <td>${order.total }</td>
+								                  <td>${order.ordertime }</td>
+								                  <td>
+								                  	<c:choose>
+														<c:when test="${order.status eq 1 }"><span class="label label-warning">等待付款</span></c:when>
+														<c:when test="${order.status eq 2 }"><span class="label label-info">准备发货</span></c:when>
+														<c:when test="${order.status eq 3 }"><span class="label label-info">等待确认</span></c:when>
+														<c:when test="${order.status eq 4 }"><span class="label label-success">交易成功</span></c:when>
+														<c:when test="${order.status eq 5 }"><span class="label label-danger">已取消</span></c:when>
+												
+													</c:choose>	
+								                  </td>
+								                  <td>
+								                  	<a href="<c:url value='/AdminOrderServlet?method=load&oid=${order.oid }'/>">查看</a>
+								                  	<c:if test="${order.status eq 1 }">
+														<a href="<c:url value='/AdminOrderServlet?method=load&oid=${order.oid }&btn=cancel'/>">取消</a><br/>						
+													</c:if>
+													<c:if test="${order.status eq 2 }">
+														<a href="<c:url value='/AdminOrderServlet?method=load&oid=${order.oid }&btn=deliver'/>">发货</a><br/>
+													</c:if>			
+								                  	
+								                  </td>
+								                </tr>
+								            </c:forEach>
+						                
+						              	</tbody>
+						              </table>
+						            </div>
+						            <!-- /.box-body -->
+						 
+						          </div>
+						          <!-- /.box -->
+						        </div>
+						      </div> --%>
+			              </div>
+			              <!-- /.tab-pane -->
+			             
+			            </div>
+			            <!-- /.tab-content -->
+			          </div>
+			          <!-- /.nav-tabs-custom -->
+			        </div>
+            	
             </section>
 
 

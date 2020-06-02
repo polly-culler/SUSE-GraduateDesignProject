@@ -470,10 +470,10 @@
 								<a href="<%=basePath%>user/index.jsp">主页</a>
 							</li>
 							<li class="trail-item">
-								<a href="#">二手书籍</a>
+								<a href="#"></a>
 							</li>
 							<li class="trail-item trail-end active">
-								公共课
+								
 							</li>
 						</ul>
 					</div>
@@ -548,7 +548,7 @@
 													</div>
 												</div>
 										</form>
-										<a href="javascript:$('#form1').submit();"><button class="single_add_to_cart_button button">Add to cart</button></a>
+										<a href="javascript:$('#form1').submit();"><button class="single_add_to_cart_button button">添加到购物车</button></a>
 									</div>
 							
 									
@@ -626,7 +626,7 @@
 						
 						<div class="widget widget-banner">
 							<a href="#">
-								<img src="<%=basePath%>user/assets/images/widget-banner.jpg" alt="img">
+								<img src="<%=basePath%>user/assets/images/jiuWu/book-banner-2-shopnow.jpg" alt="img">
 							</a>
 						</div>
 						

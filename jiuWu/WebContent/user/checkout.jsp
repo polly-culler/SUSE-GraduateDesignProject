@@ -36,14 +36,15 @@
     <script src="<%=basePath %>user/assets/js/round.js"></script>
 	
 	<script type="text/javascript">
-	//计算合计
+	/* //计算合计
 	$(function() {
 		var total = 0;
-		$(".subtotal").each(function() {
+		$("#subtotal").each(function() {
 			total += Number($(this).text());
+			consloe.log("total"+total);
 		});
 		$("#total").text(round(total, 2));
-	});
+	}); */
    </script>
 	
 </head>
@@ -382,9 +383,9 @@
 		                                               </h5>
 		                                               
 		                                               <div class="price ">
-		                                                   ${cartItem.goods.currPrice }
-		                                                   <span class="count ">${cartItem.quantity }</span>
-		                                                   <span class="subtotal">${cartItem.subtotal}</span>
+		                                                   
+		                                                   <span class="count ">X${cartItem.quantity }</span>
+		                                                   <span class="subtotal" id="#subtotal">${cartItem.subtotal}</span>
 		                                               </div>
 		                                           </div>
 		                                       </li>		   

@@ -38,7 +38,9 @@ public class CartItemServlet extends BaseServlet {
 		 * 1. 获取cartItemIds参数
 		 */
 		String cartItemIds = req.getParameter("cartItemIds");
-		double total = Double.parseDouble(req.getParameter("total"));
+		String total = req.getParameter("total");
+		System.out.println("总计:"+total); //totalPrice
+		System.out.println("ID:"+cartItemIds);
 		/*
 		 * 2. 通过service得到List<CartItem>
 		 */

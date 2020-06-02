@@ -342,7 +342,7 @@
 	                                </h3>
 	                                <div class="group-button-payment ">
 	                                    <a href="# " class="button btn-credit-card ">借记卡</a>
-	                                    <a href="# " class="button btn-paypal ">paypal</a>
+	                                    <a href="# " class="button btn-paypal ">微信/支付宝</a>
 	                                </div>
 	                                <p class="form-row form-row-card-number ">
 	                                    <label class="text ">卡号</label>
@@ -397,99 +397,11 @@
 	                                </p>
 	                            </div>
 	                        </div>
-	                        <div class="row-col-2 row-col ">
-	                            <div class="your-order ">
-	                                <h3 class="title-form ">
-	                                    Your Order
-	                                </h3>
-	                                <ul class="list-product-order ">
-	                                    <li class="product-item-order ">
-	                                        <div class="product-thumb ">
-	                                            <a href="# ">
-	                                                <img src="assets/images/item-order1.jpg " alt="img ">
-	                                            </a>
-	                                        </div>
-	                                        <div class="product-order-inner ">
-	                                            <h5 class="product-name ">
-	                                                <a href="# ">3D Dining Chair</a>
-	                                            </h5>
-	                                            <span class="attributes-select attributes-color ">Black,</span>
-	                                            <span class="attributes-select attributes-size ">XXL</span>
-	                                            <div class="price ">
-	                                                $45
-	                                                <span class="count ">x1</span>
-	                                            </div>
-	                                        </div>
-	                                    </li>
-	                                    <li class="product-item-order ">
-	                                        <div class="product-thumb ">
-	                                            <a href="# ">
-	                                                <img src="assets/images/item-order2.jpg " alt="img ">
-	                                            </a>
-	                                        </div>
-	                                        <div class="product-order-inner ">
-	                                            <h5 class="product-name ">
-	                                                <a href="# ">3D Dining Chair</a>
-	                                            </h5>
-	                                            <span class="attributes-select attributes-color ">Black,</span>
-	                                            <span class="attributes-select attributes-size ">XXL</span>
-	                                            <div class="price ">
-	                                                $45
-	                                                <span class="count ">x1</span>
-	                                            </div>
-	                                        </div>
-	                                    </li>
-	                                    <li class="product-item-order ">
-	                                        <div class="product-thumb ">
-	                                            <a href="# ">
-	                                                <img src="assets/images/item-order1.jpg " alt="img ">
-	                                            </a>
-	                                        </div>
-	                                        <div class="product-order-inner ">
-	                                            <h5 class="product-name ">
-	                                                <a href="# ">3D Dining Chair</a>
-	                                            </h5>
-	                                            <span class="attributes-select attributes-color ">Black,</span>
-	                                            <span class="attributes-select attributes-size ">XXL</span>
-	                                            <div class="price ">
-	                                                $45
-	                                                <span class="count ">x1</span>
-	                                            </div>
-	                                        </div>
-	                                    </li>
-	                                    <li class="product-item-order ">
-	                                        <div class="product-thumb ">
-	                                            <a href="# ">
-	                                                <img src="assets/images/item-order2.jpg " alt="img ">
-	                                            </a>
-	                                        </div>
-	                                        <div class="product-order-inner ">
-	                                            <h5 class="product-name ">
-	                                                <a href="# ">3D Dining Chair</a>
-	                                            </h5>
-	                                            <span class="attributes-select attributes-color ">Black,</span>
-	                                            <span class="attributes-select attributes-size ">XXL</span>
-	                                            <div class="price ">
-	                                                $45
-	                                                <span class="count ">x1</span>
-	                                            </div>
-	                                        </div>
-	                                    </li>
-	                                </ul>
-	                                <div class="order-total ">
-		                                <span class="title ">
-				                           Total Price:
-				                        </span>
-		                                <span class="total-price ">
-				                            $95
-				                        </span>
-	                                </div>
-	                            </div>
-	                        </div>
+	                        
 	                    </div>
 	                    <div class="button-control ">
-	                        <a href="# " class="button btn-back-to-shipping ">Back to shipping</a>
-	                        <a href="# " class="button btn-pay-now ">Pay now</a>
+	                        <a href="<%=basePath %>user/index.jsp " class="button btn-back-to-shipping ">返回购物</a>
+	                        <a href="<%=basePath %>user/orderSucc.jsp " class="button btn-pay-now ">支付</a>
 	                    </div>
                     </div>
                     
