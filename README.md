@@ -1,7 +1,6 @@
 ## 项目参考链接 
-"*" [基于IDEA的JavaWeb开发环境搭建](https://www.cnblogs.com/telwanggs/p/9459605.html) 
-
-"*" [基于IDEA的JavaWeb开发环境搭建](https://www.cnblogs.com/telwanggs/p/9459605.html)
+- [基于IDEA的JavaWeb开发环境搭建](https://www.cnblogs.com/telwanggs/p/9459605.html)  
+- [基于IDEA的JavaWeb开发环境搭建](https://www.cnblogs.com/telwanggs/p/9459605.html)
 
 "*" [参考网站-litta](https://www.litta.co/)
 
